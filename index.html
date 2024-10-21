@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Knowledge Base</h1>
+    <a href="add_topic.html">Add New Topic</a>
+</header>
+
+<main>
+    <form action="php/search.php" method="GET">
+        <input type="text" name="query" placeholder="Search topics..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>All Topics</h2>
+    <ul id="topics-list">
+        <?php
+        include 'php/db.php';
+        $sql = "SELECT * FROM topics ORDER BY created_at DESC";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<li><strong>" . $row['title'] . "</strong> - " . $row['description'] . "</li>";
+            }
+        } else {
+            echo "<p>No topics found.</p>";
+        }
+
+        $conn->close();
+        ?>
+    </ul>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Topic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Add a New Topic</h1>
+</header>
+
+<main>
+    <form action="php/add_topic.php" method="POST">
+        <input type="text" name="title" placeholder="Topic Title" required><br>
+        <textarea name="description" placeholder="Topic Description" required></textarea><br>
+        <input type="text" name="tags" placeholder="Tags (comma-separated)" required><br>
+        <button type="submit">Add Topic</button>
+    </form>
+</main>
+
+</body>
+</html>
